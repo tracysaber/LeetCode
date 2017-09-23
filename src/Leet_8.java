@@ -9,5 +9,7 @@
  The signature of the C++ function had been updated. If you still see your function signature accepts a const char * argument, please click the reload button  to reset your code definition.
  */
 public class Leet_8 {
-    public
+    public static void main(String s){
+        System.out.println("git commit");
+    }
 }
