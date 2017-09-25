@@ -10,6 +10,18 @@
  */
 public class Leet_8 {
     public static void main(String s){
-        System.out.println("git commit");
+        boolean flag = true;
+        int start=0;
+        if(s.charAt(0)=='+') {
+            flag = true;
+            start++;
+        }
+        if(s.charAt(0)=='-') {
+            flag = false;
+            start++;
+        }
+        for(int i=start;i<s.length();i++){
+               
+        }
     }
 }
