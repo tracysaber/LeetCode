@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class Leet_3 {
     public boolean no_repeat_string (String s){
-        Map<Character,Integer> ss=new HashMap<>();
+        Map<Character,Integer> ss=new HashMap();
         boolean flag =true;
         for(int i=0;i<s.length();i++){
             if(!ss.containsKey(s.charAt(i)))
@@ -25,7 +25,7 @@ public class Leet_3 {
     }
     public int lengthOfLongestSubstring(String s) {
         int i =0,j=0,max=0;
-        Set<Character> set = new HashSet<>();
+        Set<Character> set = new HashSet<Character>();
         while(j<s.length()){
             if(!set.contains(s.charAt(j))){
                 set.add(s.charAt(j++));
