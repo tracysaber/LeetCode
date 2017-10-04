@@ -1,16 +1,27 @@
+import java.util.Arrays;
+
 /**
- * Created by tracysaber on 2017-10-2.
- * Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
-
- Note: The solution set must not contain duplicate triplets.
-
- For example, given array S = [-1, 0, 1, 2, -1, -4],
-
- A solution set is:
- [
- [-1, 0, 1],
- [-1, -1, 2]
- ]
+ * Created by tracysaber on 2017-10-1.
+ * Write a function to find the longest common prefix string amongst an array of strings.
  */
 public class Leet_14 {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length>0){
+            Arrays.sort(strs);
+            int len =Math.min(strs[0].length(),strs[strs.length-1].length());
+            StringBuilder ss= new StringBuilder();
+            for(int i=0;i<len;i++){
+                if(strs[0].charAt(i)==strs[strs.length-1].charAt(i))
+                    ss.append(strs[0].charAt(i));
+                else
+                    return ss.toString();
+            }
+            return ss.toString();
+        }
+        return "";
+    }
+    public static void main(String args[]){
+        String strs[]={"you","yo","yoyoyo"};
+        System.out.println(new Leet_14().longestCommonPrefix(strs));
+    }
 }
