@@ -6,8 +6,12 @@
 
  Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.
  */
+
 public class Leet_24 {
     public ListNode swapPairs(ListNode head) {
+        return null;
+    }
+    public static void main(String args[]){
 
     }
 }
