@@ -9,7 +9,17 @@
 
 public class Leet_24 {
     public ListNode swapPairs(ListNode head) {
-        return null;
+        if(head ==null)
+            return null;
+        if(head.next==null)
+            return head;
+        else{
+            int swap=head.val;
+            head.val = head.next.val;
+            head.next.val = swap;
+            head.next.next = swapPairs(head.next.next);
+            return head;
+        }
     }
     public static void main(String args[]){
 
