@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Created by tracysaber on 2017-10-10.
  * Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
@@ -18,15 +20,25 @@
  */
 public class Leet_25 {
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode it = head;
-        int length =0;
-        while(it!=null){
-            it = it.next;
-            length++;
+        ListNode first=head;
+        ListNode second=head;
+        Stack<Integer> nums=new Stack<Integer>();
+        for(int i =0;i<k;i++){
+            if(first==null)
+                return head;
+            else{
+                nums.push(first.val);
+                first = first.next;
+            }
         }
-        int epoch = length/k;
-        it=head;
-        return null;
+        for(int i =0;i<k;i++){
+            second.val = nums.pop();
+            second= second.next;
+        }
+        if(second!=null)
+            second= reverseKGroup(second,k);
+
+        return head;
 //        for(int i =0;i<epoch;i++){
 //            int nums[] =new int[k/2];
 //            for(int j=0;j<k;i++){
@@ -62,7 +74,7 @@ public class Leet_25 {
             it.next = a;
             it = a;
         }
-        ListNode b= new Leet_25().reverseKGroup(count,3);
+        ListNode b= new Leet_25().reverseKGroup(new ListNode(1),1);
         System.out.println();
     }
 }
