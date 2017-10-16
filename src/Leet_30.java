@@ -21,30 +21,21 @@ public class Leet_30 {
             return null;
         else{
             sublen = words.length * words[0].length();
-            for(int i =0;i<words.length;i++){
-                w.put(words[i],0);
-            }
+            for(String W:words)
+                w.put(W,w.containsKey(W)?w.get(W)+1:1);
         }
         for(int i =0;i<s.length()-sublen+1;i++){
-            String word = s.substring(i,i+ wordklen * words.length);
             Map<String,Integer> temp = new HashMap<String, Integer>(w);
-            Set<String> keyset = new HashSet<String>();
-            for(String key:temp.keySet()){
-                keyset.add(key);
-            }
-            Iterator<String> it =keyset.iterator();
-            while(it.hasNext()){
-                String key=it.next();
-                if(!word.contains(key))
+            //Set<String> keyset = new HashSet<String>(w.keySet());
+            for(int j=0;j<words.length;j++){
+                String subs = s.substring(i+j*wordklen,i+j*wordklen+wordklen);
+                if(!temp.containsKey(subs)||temp.get(subs)<1)
                     break;
-                else {
-                    String ws[]=word.split(key);
-                    word="";
-                    for(int j=0;j<ws.length;j++){
-                        word+=ws[j];
-                    }
-                    temp.remove(key);
-                }
+                else
+                    temp.put(subs, temp.get(subs) - 1);
+                if(temp.get(subs)==0)
+                    temp.remove(subs);
+
             }
             if(temp.isEmpty())
                 l.add(i);
@@ -52,9 +43,11 @@ public class Leet_30 {
         return l ;
     }
     public static void main(String args[]){
-        String s="lingmindraboofooowingdingbarrwingmonkeypoundcake";
-        String words[] = {"fooo","barr","wing","ding","wing"};
+        String s="ababaab";
+        String words[] = {"ab","ba","ba"};
         //String words[]={"foo", "bar"};
         List<Integer> ll =new Leet_30().findSubstring(s,words);
+        //String ss = "my.test.txt.test";
+        //System.out.println(s.replace("barr", "#"));
     }
 }
