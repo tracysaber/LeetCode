@@ -10,30 +10,26 @@ import java.util.Stack;
  */
 public class Leet_32 {
     public int longestValidParentheses(String s) {
-        Stack<Character> par = new Stack<Character>();
+        Stack<Integer> par = new Stack<Integer>();
         int max = 0;
-        int len =0 ;
-        int left =0;
+        int left =-1;
         for(int i =0;i<s.length();i++){
-            //int len=0;
-
             if(s.charAt(i)=='('){
-                par.push('(');
-                left++;
+                par.push(i);
             }
-            else{
-                if(par.empty()){
-                    if(len!=0)
-                        len=0;
-                }
+            else {
+                if(par.isEmpty())
+                    left =i;
                 else{
                     par.pop();
-                    if(par.empty())
-                        len+=(left*2);
-                    max = Math.max(len,max);
-                    left=0;
+                    if(par.isEmpty())
+                        max = Math.max(max,i-left);
+                    else
+                        max = Math.max(max,(i-par.peek()));
+
                 }
             }
+
         }
         return max;
     }
