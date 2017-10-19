@@ -8,4 +8,7 @@
  A partially filled sudoku which is valid.
  */
 public class Leet_36 {
+ public boolean isValidSudoku(char[][] board) {
+
+ }
 }
