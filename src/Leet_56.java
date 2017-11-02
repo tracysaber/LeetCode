@@ -28,7 +28,7 @@ public class Leet_56 {
 				return o1.start>o2.start?1:(o1.start==o2.start?0:-1);
 			}
 		});
-		List<Interval> result = new LinkedList<>();
+		List<Interval> result = new LinkedList<Interval>();
 		int start = intervals.get(0).start;
 		int end = intervals.get(0).end;
 		for(Interval interval:intervals){
@@ -45,7 +45,7 @@ public class Leet_56 {
 		return result;
 	}
 	public static void main(String args[]){
-		List<Interval>  a = new LinkedList<>();
+		List<Interval>  a = new LinkedList<Interval>();
 		a.add(new Interval(1,3));
 		a.add(new Interval(2,6));
 		a.add(new Interval(8,9));
