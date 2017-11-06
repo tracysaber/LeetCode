@@ -13,6 +13,33 @@
  */
 public class Leet_31 {
     public void nextPermutation(int[] nums) {
-
+        int n = nums.length;
+        if(n<=1)
+            return ;
+        int i = n -2;
+        while(i>=0&&nums[i]>=nums[i+1]){
+            i--;
+        }
+        if(i>=0) {
+            int j = n - 1;
+            while (nums[j] <= nums[i]) {
+                j--;
+            }
+            swap(nums, i, j);
+        }
+        reverse(nums,i+1,n-1);
+    }
+    public void swap(int n[],int a,int b){
+        int s = n[a];
+        n[a]=n[b];
+        n[b]=s;
+    }
+    public void reverse(int []n,int start,int end){
+        while(end>start)
+            swap(n,start++,end--);
+    }
+    public static void main(String args[]){
+        int a[]={1,1,5};
+        new Leet_31().nextPermutation(a);
     }
 }
