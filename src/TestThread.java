@@ -23,7 +23,7 @@ public class TestThread implements Runnable {
 			start = System.nanoTime();
 		if(mode==0){
 			while (index < 100) {
-				System.out.println(Thread.currentThread().getName() + " " + index);
+				//System.out.println(Thread.currentThread().getName() + " " + index);
 				list.add(22);
 				index++;
 			}
@@ -33,7 +33,7 @@ public class TestThread implements Runnable {
 	}
 	public static void main(String args[]){
 		TestThread a = new TestThread();
-		Thread t[] = new Thread[50];
+		Thread t[] = new Thread[100];
 		//a.start = System.nanoTime();
 		for(int i=0;i<t.length;i++){
 			t[i]=new Thread(a);
