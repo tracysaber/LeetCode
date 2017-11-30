@@ -11,7 +11,7 @@ import java.util.Stack;
 
  Note:
  Given m, n satisfy the following condition:
- 1 ¡Ü m ¡Ü n ¡Ü length of list.
+ 1 ï¿½ï¿½ m ï¿½ï¿½ n ï¿½ï¿½ length of list.
  *
  */
 public class Leet_92 {
