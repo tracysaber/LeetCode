@@ -29,4 +29,28 @@ public class Leet_97 {
         }
         return result[result.length-1][result[0].length-1];
     }
+
+//	public boolean isInterleave(String s1, String s2, String s3) {
+//		return back(s1,s2,s3,0,0,0);
+//	}
+//	public boolean back(String s1,String s2,String s3,int i,int j,int index){
+//		//boolean flag = false;
+//		if(i==s1.length()&&j==s2.length()&&index ==s3.length()){
+//			return true;
+//		}
+//		else {
+//			if(i<s1.length()&&index<s3.length()&&s1.charAt(i)==s3.charAt(index)){
+//				if(back(s1,s2,s3,i+1,j,index+1))
+//					return true;
+//			}
+//			if(j<s2.length()&&index<s3.length()&&s2.charAt(j)==s3.charAt(index)){
+//				return back(s1,s2,s3,i,j+1,index+1);
+//			}
+//		}
+//		return false;
+//	}
+	public static void main(String args[]){
+		System.out.println(new Leet_97().isInterleave("db","b","cbb"));
+	}
+
 }
