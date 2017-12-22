@@ -58,8 +58,6 @@ public class Leet_126 {
 				now.add(wordList.get(i));
 				if(now.size()<=min)
 					findNext(wordList.get(i),endWord,wordList,now);
-				else
-					return;
 				now.remove(now.size()-1);
 			}
 		}
