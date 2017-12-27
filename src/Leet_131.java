@@ -38,7 +38,15 @@ public class Leet_131 {
                 List<String> b= new LinkedList<String>(re.get(i));
                 b.remove(0);
                 b.set(0, s.charAt(0) + b.get(0));
-                result.add(new LinkedList<String>(b));
+                if(!result.contains(b)) result.add(new LinkedList<String>(b));
+            }
+            if(a.size()>=3&&a.get(2).equals(String.valueOf(s.charAt(0)))){
+                List<String> c= new LinkedList<String>(re.get(i));
+                c.remove(0);
+                c.add(0, s.charAt(0) + c.get(0)+c.get(1));
+                c.remove(1);
+                c.remove(1);
+                if(!result.contains(c)) result.add(new LinkedList<String>(c));
             }
         }
         return result;
@@ -50,6 +58,6 @@ public class Leet_131 {
         return true;
     }
     public static void main(String args[]){
-        List<List<String>> a = new Leet_131().partition("aab");
+        List<List<String>> a = new Leet_131().partition("cbbbcc");
     }
 }
