@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,20 +43,51 @@ public class Leet_140 {
 //			}
 //		}
 //	}
-	public List<String> wordBreak(String s,List<String> wordDict){
-		List<List<String>> result = new LinkedList<List<String>>();
-		boolean re [] = new boolean[s.length()+1];
-		re[0] = true;
-		for(int i =1;i<s.length();i++){
-			for(int j =0;j<i;j++){
-				if(result[j]&&wordDict.contains(s.substring(j,i)))
-				{
-					result[i] = true;
-					break;
-				}
+//	public List<String> wordBreak(String s,List<String> wordDict){
+//		List<List<String>> result = new LinkedList<List<String>>();
+//		boolean re [] = new boolean[s.length()+1];
+//		re[0] = true;
+//		result.add(new LinkedList<String>());
+//		for(int i =1;i<re.length;i++){
+//			result.add(new LinkedList<String>());
+//			for(int j =0;j<i;j++){
+//				if(re[j]&&wordDict.contains(s.substring(j,i)))
+//				{
+//					re[i] = true;
+//					String word = s.substring(j,i);
+//					List<String> pre = result.get(j);
+//					if(pre.isEmpty())	result.get(i).add(word);
+//					else{
+//						for(int k=0;k<pre.size();k++)	result.get(i).add(pre.get(k)+" "+word);
+//					}
+//				}
+//			}
+//		}
+//		return result.get(s.length());
+//	}
+public List<String> wordBreak(String s, List<String> wordDict) {
+	return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
+}
+
+	// DFS function returns an array including all substrings derived from s.
+	List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>> map) {
+		if (map.containsKey(s))
+			return map.get(s);
+
+		LinkedList<String>res = new LinkedList<String>();
+		if (s.length() == 0) {
+			res.add("");
+			return res;
+		}
+		for (String word : wordDict) {
+			if (s.startsWith(word)) {
+				List<String>sublist = DFS(s.substring(word.length()), wordDict, map);
+				for (String sub : sublist)
+					res.add(word + (sub.isEmpty() ? "" : " ") + sub);
 			}
 		}
-		return result[s.length()];
+		map.put(s, res);
+		return res;
 	}
 	public static void main(String args[]){
 		List<String> dict = new LinkedList<String>();
