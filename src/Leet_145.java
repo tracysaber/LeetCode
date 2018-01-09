@@ -15,6 +15,6 @@ import java.util.List;
  */
 public class Leet_145 {
     public List<Integer> postorderTraversal(TreeNode root) {
-        
+
     }
 }
