@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by tracysaber on 2018-1-21.
@@ -21,26 +22,43 @@ import java.util.List;
 
  */
 class MinStack {
-    List<Integer> stack;
-    /** initialize your data structure here. */
-    public MinStack() {
-        stack = new LinkedList<Integer>();
+    long min;
+    Stack<Long> stack;
+
+    public MinStack(){
+        stack=new Stack<Long>();
     }
 
     public void push(int x) {
-        stack.add(x);
+        if (stack.isEmpty()){
+            stack.push(0L);
+            min=x;
+        }else{
+            stack.push(x-min);//Could be negative if min value needs to change
+            if (x<min) min=x;
+        }
     }
 
     public void pop() {
-        stack.remove(stack.size()-1);
+        if (stack.isEmpty()) return;
+
+        long pop=stack.pop();
+
+        if (pop<0)  min=min-pop;//If negative, increase the min value
+
     }
 
     public int top() {
-        return stack.get(stack.size()-1);
+        long top=stack.peek();
+        if (top>0){
+            return (int)(top+min);
+        }else{
+            return (int)(min);
+        }
     }
 
     public int getMin() {
-
+        return (int)min;
     }
 }
 public class Leet_155 {
