@@ -59,7 +59,7 @@ class MinStack {
 
     public int getMin() {
         return (int)min;
-    }
+
 }
 public class Leet_155 {
 }
