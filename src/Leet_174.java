@@ -39,7 +39,7 @@ public class Leet_174 {
             for(int j=1;j<dungeon[0].length;j++){
                 //dungeon[i][j]=Math.max(dungeon[i][j-1],dungeon[i-1][j]);
                 now[i][j] = Math.max(result[i-1][j],result[i][j-1])+dungeon[i][j];
-                result[i][j] = Math.max(Math.min(result[i-1][j],now[i-1][j]+dungeon[i][j]),)
+                //result[i][j] = Math.max(Math.min(result[i-1][j],now[i-1][j]+dungeon[i][j]),);
             }
         }
         return result[result.length-1][result[0].length-1];
