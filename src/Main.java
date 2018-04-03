@@ -1,39 +1,42 @@
 import java.util.*;
-class point{
-    int x;
-    int y;
-    public point(int x,int y){
-        this.x=x;this.y=y;
-    }
-}
+
 public class Main{
-    public boolean isSq(point a[]){
-        boolean flag = true;
-        double sum = Math.pow(a[0].x-a[1].x,2)+Math.pow(a[0].y-a[1].y,2);
-        for(int i=2;i<4;i++){
-            if(sum!=Math.pow(a[0].x-a[i].x,2)+Math.pow(a[0].y-a[i].y,2))
-            {
-                return false;
-            }
+    public void subSet(Set<List<Integer>> re,int num[],int index){
+        if(index ==num.length){
+            return ;
         }
-        return true;
+        else{
+            Set<List<Integer>> temp = new TreeSet<List<Integer>>(new Comparator<List<Integer>>() {
+                @Override
+                public int compare(List<Integer> o1, List<Integer> o2) {
+                    return o1.size()-o2.size();
+                }
+            });
+            for(List<Integer> element:re){
+                //temp.add(element);
+                List<Integer> a = new LinkedList<Integer>(element);
+                a.add(num[index]);
+                temp.add(a);
+            }
+            re.addAll(temp);
+            List<Integer> a = new LinkedList<Integer>();
+            a.add(num[index]);
+            re.add(a);
+            subSet(re, num, ++index);
+        }
+
     }
     public static void main(String args[]){
         Scanner scan = new Scanner(System.in);
-        int  n = scan.nextInt();
-        point points[][] = new point [n][4];
-        for(int i=0;i<n;i++){
-            for(int j=0;j<4;j++){
-                points[i][j].x = scan.nextInt();
+        //int  n = scan.nextInt();
+        int a[] ={123,456,789};
+        Set<List<Integer>> result = new TreeSet<List<Integer>>(new Comparator<List<Integer>>() {
+            @Override
+            public int compare(List<Integer> o1, List<Integer> o2) {
+                return o1.size()-o2.size();
             }
-            for(int j=0;j<4;j++){
-                points[i][j].y = scan.nextInt();
-            }
-        }
-        for(int i=0;i<n;i++){
-
-        }
-
+        });
+        new Main().subSet(result,a,0);
         System.out.println();
     }
 }

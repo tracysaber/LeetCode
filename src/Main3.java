@@ -15,7 +15,7 @@ public class Main3 {
 			}
 			System.out.println();
 			return ;
-			Character.
+			//Character.
 		}
 		else{
 			for(int i=0;i<10;i++){
