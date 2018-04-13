@@ -1,42 +1,40 @@
 import java.util.*;
 
 public class Main{
-    public void subSet(Set<List<Integer>> re,int num[],int index){
-        if(index ==num.length){
-            return ;
-        }
-        else{
-            Set<List<Integer>> temp = new TreeSet<List<Integer>>(new Comparator<List<Integer>>() {
-                @Override
-                public int compare(List<Integer> o1, List<Integer> o2) {
-                    return o1.size()-o2.size();
-                }
-            });
-            for(List<Integer> element:re){
-                //temp.add(element);
-                List<Integer> a = new LinkedList<Integer>(element);
-                a.add(num[index]);
-                temp.add(a);
+    public boolean judge(String a){
+        Stack<Character> stack = new Stack<Character>();
+        stack.push('(');
+        stack.push('(');
+        for(int i=0;i<a.length();i++){
+            char now = a.charAt(i);
+            if(now=='('){
+                stack.push(now);
             }
-            re.addAll(temp);
-            List<Integer> a = new LinkedList<Integer>();
-            a.add(num[index]);
-            re.add(a);
-            subSet(re, num, ++index);
+            if(now==')'){
+                if(stack.isEmpty()){
+                    return false;
+                }
+                else
+                    stack.pop();
+            }
         }
-
+        if(stack.size()==2)
+            return true;
+        else
+            return false;
     }
     public static void main(String args[]){
         Scanner scan = new Scanner(System.in);
-        //int  n = scan.nextInt();
-        int a[] ={123,456,789};
-        Set<List<Integer>> result = new TreeSet<List<Integer>>(new Comparator<List<Integer>>() {
-            @Override
-            public int compare(List<Integer> o1, List<Integer> o2) {
-                return o1.size()-o2.size();
-            }
-        });
-        new Main().subSet(result,a,0);
-        System.out.println();
+        int  t = scan.nextInt();
+        String s[] =new String[t];
+        for(int i=0;i<t;i++){
+            s[i]=scan.next();
+        }
+        for(int i=0;i<t;i++){
+            if(new Main().judge(s[i]))
+                System.out.println("Yes");
+            else
+                System.out.println("No");
+        }
     }
 }
