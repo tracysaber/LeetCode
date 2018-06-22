@@ -16,11 +16,11 @@ public class Leet_215 {
 	private int findKth(int []nums,int low ,int high){
 		int temp = nums[low];
 		while(low<high){
-			while(low<high&&nums[high]>=temp){
+			while(low<high&&nums[high]<=temp){
 				high--;
 			}
 			nums[low]=nums[high];
-			while(low<high&&nums[low]<=temp){
+			while(low<high&&nums[low]>=temp){
 				low++;
 			}
 			nums[high]=nums[low];
@@ -31,18 +31,18 @@ public class Leet_215 {
 	private void _findKth(int []nums,int k,int low,int high){
 		int index = findKth(nums,low,high);
 		if (k<index){
-			_findKth(nums,k,index,high);
+			_findKth(nums,k,low,index);
 		}
 		if(k>index){
-			_findKth(nums,k,low,index);
+			_findKth(nums,k,index+1,high);
 		}
 	}
 	public int findKthLargest(int[] nums, int k) {
 		_findKth(nums,k-1,0,nums.length-1);
-		return nums[nums.length-k];
+		return nums[k-1];
 	}
 	public static void main(String args[]){
-		int a[]={3,2,1,5,6,4};
-		System.out.println(new Leet_215().findKthLargest(a,2));
+		int a[]={3,2,3,1,2,4,5,5,6};
+		System.out.println(new Leet_215().findKthLargest(a,4));
 	}
 }
