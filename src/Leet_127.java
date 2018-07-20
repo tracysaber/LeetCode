@@ -46,17 +46,18 @@ public class Leet_127 {
 		return true;
 	}
 	public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+		if(!wordList.contains(endWord))	return 0;
 		if(isNeib(beginWord,endWord))	return 1;
 		else{
 			int pathLen = 1;
-			int len = wordList.size();
+			//int len = wordList.size();
+			LinkedList<String> now = new LinkedList<String>();
 			LinkedList<String> next = new LinkedList<String>();
-			for(int i =0;i<len;i++){
-				if(isNeib(wordList.get(i),beginWord)){
-					next.add(wordList.get(i));
-					wordList.remove(i);
-					i--;
-					len--;
+			now.add(beginWord);
+			while(!wordList.isEmpty()){
+				int len = wordList.size();
+				for(int i =0;i<len;i++){
+					//if(isNeib(wordList.get(i),beginWord)
 				}
 			}
 			return pathLen;
