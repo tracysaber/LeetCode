@@ -26,12 +26,12 @@ import java.util.Set;
  courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
  So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .
  */
-class Node{
+class PathNode{
 	Set<Integer> pre;
 	Set<Integer> next;
 	boolean hasNopre;
 	boolean isFinished;
-	public Node(){
+	public PathNode(){
 		this.pre=new HashSet<Integer>();
 		this.next=new HashSet<Integer>();
 		this.isFinished = false;
@@ -41,9 +41,9 @@ class Node{
 public class Leet_210 {
 
 	public int[] findOrder(int numCourses, int[][] prerequisites) {
-		Node nodes[] = new Node[numCourses];
+		PathNode nodes[] = new PathNode[numCourses];
 		for(int i=0;i<numCourses;i++){
-			nodes[i]= new Node();
+			nodes[i]= new PathNode();
 		}
 		for(int i=0;i<prerequisites.length;i++){
 			nodes[prerequisites[i][0]].pre.add(prerequisites[i][1]);

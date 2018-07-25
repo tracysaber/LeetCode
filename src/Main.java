@@ -93,7 +93,7 @@ public class Main{
             h[i++] = scan.nextInt();
         }
         Arrays.sort(h, 0, i);
-        List<int> l =Arrays.asList(h);
+        //List<int> l =Arrays.asList(h);
         List<Integer> list = new LinkedList<Integer>();
         Collections.sort(list, new Comparator<Integer>() {
             @Override
