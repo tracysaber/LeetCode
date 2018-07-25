@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main{
@@ -92,6 +93,14 @@ public class Main{
             h[i++] = scan.nextInt();
         }
         Arrays.sort(h, 0, i);
+        List<int> l =Arrays.asList(h);
+        List<Integer> list = new LinkedList<Integer>();
+        Collections.sort(list, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return 0;
+            }
+        });
         int low=0,high = i-1;
         int nums =0;
         while(h[low]==100){
