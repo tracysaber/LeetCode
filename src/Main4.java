@@ -34,14 +34,40 @@ public class Main4 {
     }
 
     public static void main(String args[]){
-        int [][]a ={{1,2,3},{4,5,6},{7,8,9}};
-        LinkedList<Integer>  n=new LinkedList<Integer>();
-        for(int i=0;i<5;i++){
-            n.add(i+1);
+//        int [][]a ={{1,2,3},{4,5,6},{7,8,9}};
+//        LinkedList<Integer>  n=new LinkedList<Integer>();
+//        for(int i=0;i<5;i++){
+//            n.add(i+1);
+//        }
+//        new Main4().all("",n);
+//        System.out.println();
+        int nums[]={1,2,3,0,0,1,2,0,5,0,6};
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0){
+                for(int j=i+1;j<nums.length;j++){
+                    if(nums[j]!=0){
+                        nums[i]=nums[j];
+                        nums[j]=0;
+                        break;
+                    }
+                }
+            }
         }
-        new Main4().all("",n);
+        String a = new String ("ddd");
+        StringBuffer b = new StringBuffer(a);
+        System.out.print(a.equals(b));
+//        int index_0=0,index_not=nums.length-1;
+//        while (index_0<=index_not){
+//            while(nums[index_0]!=0)
+//                index_0++;
+//            while(nums[index_not]==0)
+//                index_not--;
+//            if(index_0<=index_not) {
+//                nums[index_0] = nums[index_not];
+//                nums[index_not] = 0;
+//            }
+//        }
         System.out.println();
-
 
         //new Main4().printNow("",4);
 

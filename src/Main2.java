@@ -26,7 +26,11 @@
 //		System.out.print(flag?result:"false");
 //	}
 //}
+import java.io.*;
+
 import java.util.*;
+import java.util.concurrent.Executor;
+
 public class Main2 {
 //	public  void build(List<String> re,String now,int left,int right){
 //		if(left==0&&right==0){
@@ -55,7 +59,29 @@ public class Main2 {
 	public static void main(String args[]){
 		float a = 12.5f;
 		double b = (int)Math.ceil(a);
-		System.out.print(b);
+		System.out.println(b);
+		try{
+
+			InputStream inputStream = new FileInputStream("D:\\texlive\\release-texlive.txt");
+			byte byt[] = new byte[512];
+			inputStream.read(byt);
+			for(byte bb:byt)
+				System.out.print((char)bb);
+			inputStream.close();
+			Reader reader = new FileReader("D:\\texlive\\release-texlive.txt");
+			char ch[] = new char[512];
+			reader.read(ch);
+
+			for(char c:ch)
+				System.out.print(c);
+			//ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(""));
+			//out.writeObject();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+
+
 //		Scanner scan = new Scanner(System.in);
 //		int n = scan.nextInt();
 //		int k = scan.nextInt();
