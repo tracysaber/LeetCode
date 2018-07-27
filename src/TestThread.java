@@ -1,12 +1,17 @@
 import com.sun.xml.internal.stream.util.ThreadLocalBufferAllocator;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  *
  */
-public class TestThread implements Runnable {
+public class TestThread implements Runnable ,Serializable{
 	ArrayList<Integer> list = new ArrayList<Integer>();
 	int mode;
 	int index =0;
@@ -35,8 +40,10 @@ public class TestThread implements Runnable {
 	public static void main(String args[]){
 		TestThread a = new TestThread();
 		Thread t[] = new Thread[100];
+		ExecutorService es = Executors.newFixedThreadPool(20);
 		//ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
 		//a.start = System.nanoTime();
+		//ObjectInputStream out = new ObjectInputStream(new FileInputStream(""));
 		for(int i=0;i<t.length;i++){
 			t[i]=new Thread(a);
 			t[i].start();
