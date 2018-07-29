@@ -11,6 +11,31 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  *
  */
+class MyThread implements Runnable{
+	int count;
+	static int class_count=0;
+	public MyThread(int c){
+		count =c;
+	}
+	@Override
+	public void run(){
+		int i=0;
+		while(i++<10){
+			this.addCount();
+			System.out.println("nos" + this.count);
+		}
+		while(i++<15){
+			this.addStaticCount();
+			System.out.println("static" + class_count);
+		}
+	}
+	public synchronized int addCount(){
+		return ++count;
+	}
+	public static synchronized int addStaticCount(){
+		return ++class_count;
+	}
+}
 public class TestThread implements Runnable ,Serializable{
 	ArrayList<Integer> list = new ArrayList<Integer>();
 	int mode;
@@ -41,18 +66,24 @@ public class TestThread implements Runnable ,Serializable{
 		TestThread a = new TestThread();
 		Thread t[] = new Thread[100];
 		ExecutorService es = Executors.newFixedThreadPool(20);
+		//MyThread mt = new MyThread(10);
+		for(int i =0;i<5;i++){
+			MyThread m = new MyThread(i);
+			es.execute(m);
+		}
+		es.shutdown();
 		//ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
 		//a.start = System.nanoTime();
 		//ObjectInputStream out = new ObjectInputStream(new FileInputStream(""));
-		for(int i=0;i<t.length;i++){
-			t[i]=new Thread(a);
-			t[i].start();
-		}
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println(a.time);
+//		for(int i=0;i<t.length;i++){
+//			t[i]=new Thread(a);
+//			t[i].start();
+//		}
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(a.time);
 	}
 }

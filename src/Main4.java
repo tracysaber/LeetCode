@@ -1,4 +1,8 @@
+/**
+ * ## LeetCode Problems Solutions
 
+ * 刷题源码记录
+ */
 import java.util.*;
 public class Main4 {
     public void printNow(String now,int n){
