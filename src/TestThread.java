@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -72,6 +75,13 @@ public class TestThread implements Runnable ,Serializable{
 			es.execute(m);
 		}
 		es.shutdown();
+		List<Integer> list = new ArrayList<Integer>();
+		Collections.sort(list, new Comparator<Integer>() {
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return 0;
+			}
+		});
 		//ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor();
 		//a.start = System.nanoTime();
 		//ObjectInputStream out = new ObjectInputStream(new FileInputStream(""));
